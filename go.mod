@@ -1,5 +1,5 @@
 module github.com/jailtonjunior94/go-rabbitmq
 
-go 1.14
+go 1.20
 
-require github.com/streadway/amqp v1.0.0
+require github.com/rabbitmq/amqp091-go v1.8.1

@@ -1,12 +1,14 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
-	"github.com/streadway/amqp"
+	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 func main() {
+	ctx := context.Background()
 	fmt.Println("Server is running - Golang RabbitMQ")
 
 	connection, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
@@ -32,7 +34,7 @@ func main() {
 	}
 	fmt.Println(queue)
 
-	err = channel.Publish("", "golang-queue", false, false, amqp.Publishing{
+	err = channel.PublishWithContext(ctx, "", "golang-queue", false, false, amqp.Publishing{
 		ContentType: "text/plain",
 		Body:        []byte("Hello World"),
 	})
