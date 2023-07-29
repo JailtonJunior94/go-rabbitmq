@@ -40,6 +40,14 @@
       "mode": "auto",
       "program": "${workspaceFolder}/dlq/dlq.go",
       "args": []
+    },
+    {
+      "name": "[Debug] Pkg Rabbit",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/cmd/main.go",
+      "args": []
     }
   ],
   "compounds": [
