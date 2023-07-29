@@ -9,16 +9,12 @@ import (
 
 func main() {
 	ctx := context.Background()
-	fmt.Println("Server is running - Golang RabbitMQ")
-
 	connection, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
 	if err != nil {
 		fmt.Println(err)
 		panic(err)
 	}
 	defer connection.Close()
-
-	fmt.Println("Successfully connected to our RabbitMQ Instance")
 
 	channel, err := connection.Channel()
 	if err != nil {
@@ -32,9 +28,8 @@ func main() {
 		fmt.Println(err)
 		panic(err)
 	}
-	fmt.Println(queue)
 
-	err = channel.PublishWithContext(ctx, "", "golang-queue", false, false, amqp.Publishing{
+	err = channel.PublishWithContext(ctx, "", queue.Name, false, false, amqp.Publishing{
 		ContentType: "text/plain",
 		Body:        []byte("Hello World"),
 	})
@@ -43,6 +38,5 @@ func main() {
 		fmt.Println(err)
 		panic(err)
 	}
-
 	fmt.Println("Successfully Published Message to Queue")
 }
