@@ -58,11 +58,19 @@
       "args": []
     },
     {
-      "name": "[Debug] Sample - ProtoBuf",
+      "name": "[Debug] Producer - ProtoBuf",
       "type": "go",
       "request": "launch",
       "mode": "auto",
       "program": "${workspaceFolder}/samples/protobuf/cmd/producer/producer.go",
+      "args": []
+    },
+    {
+      "name": "[Debug] Consumer - ProtoBuf",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/samples/protobuf/cmd/consumer/consumer.go",
       "args": []
     }
   ],
